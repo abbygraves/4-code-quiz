@@ -1,42 +1,102 @@
-body {
+* {
+  box-sizing: border-box;
+}
 
+:root {
+  --primary: #00e1ff8d;
+  --secondary: #01c1da;
+  --tertiary: rgba(0, 0, 255, 0.35);
+  --fourth: rgb(220, 220, 220);
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 
 .info-bar {
-/* essential styling for the container holding "View High Scores" and the timer */
+  margin: 25px 25px 0 18px;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 
 .highscore {
 /* container holding: "View High Scores" */
+  display: inline;
 }
 
 
 .highscore a {
 /* specificlly targeting the words "View High Scores" only */
-/* might not need this seperate rule for <a> -- combine all into one (.highscore) class rule?? */
+  text-decoration: none;
+  color: var(--secondary);
+  padding: 0px 1px 3px 1px;
+}
+
+
+.highscore a:hover {
+  border-bottom: 3px dotted var(--tertiary);
 }
 
 
 .timer {
 /* container holding: "Time: 0" */
+  background-color: var(--primary);
+  padding: 5px 15px;
+  border-radius: 5px;
+  float: right;
+  color: black;
+  filter: drop-shadow(-2px 4px 4px var(--fourth));
+}
+
+  
+.timer span {
+  font-weight: normal;
 }
 
 
-.main-page-container {
+.main-page {
 /* container holding: quiz title (<h2>) / quiz instructions (<p>) / "Start Quiz!" button (<button>) */
+  display: block;
+  /* background-color: rgba(0, 0, 255, 0.175); */
+  padding: 30px 30px 60px 30px;
+  border-radius: 10px;
+  margin: 80px auto 0 auto;
+  max-width: 900px;
+  text-align: center;
+}
+
+.main-page h1 {
+  font-size: 50px;
+  margin-bottom: 35px;
+}
+
+.main-page p {
+  font-size: 20px;
+  padding: 0 40px;
+  line-height: 1.4;
+  font-weight:lighter;
 }
 
 
 .button-style {
 /* universal styling for all buttons throughout project */
-
+  font-size: 21px;
+  padding: 10px 20px;
+  margin-top: 30px;
+  background-color: transparent;
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+  color: #000;
+  font-weight: bold;
 }
 
 
-.button-style:hover {
-  /* universal hover effect for all buttons throughout project */
+.button-style:hover,
+.button-style:focus {
+  box-shadow: inset 7em 0 0 0 var(--primary);
+  transition: 0.6s;
 }
 
 
