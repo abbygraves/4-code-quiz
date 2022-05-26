@@ -1,0 +1,42 @@
+body {
+
+}
+
+
+.info-bar {
+/* essential styling for the container holding "View High Scores" and the timer */
+}
+
+
+.highscore {
+/* container holding: "View High Scores" */
+}
+
+
+.highscore a {
+/* specificlly targeting the words "View High Scores" only */
+/* might not need this seperate rule for <a> -- combine all into one (.highscore) class rule?? */
+}
+
+
+.timer {
+/* container holding: "Time: 0" */
+}
+
+
+.main-page-container {
+/* container holding: quiz title (<h2>) / quiz instructions (<p>) / "Start Quiz!" button (<button>) */
+}
+
+
+.button-style {
+/* universal styling for all buttons throughout project */
+
+}
+
+
+.button-style:hover {
+  /* universal hover effect for all buttons throughout project */
+}
+
+
