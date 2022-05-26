@@ -41,12 +41,34 @@ var questions = [
   }
 ];
 
+var startBtn = document.getElementById("start-btn");
+var mainPage = document.getElementById("main-page");
+var questionEl = document.querySelector(".questions");
 
-function startTimer() {
+function startQuiz() {
+  startBtn.style.display = 'none';
+  mainPage.style.display = 'none';
+
+  var questionBox = document.getElementById("question-box");
+  questionBox.style.display = 'block';
+
+  
 
   // setInterval function
   // if timer runs out and i have not completed questions then do this 
 
   // if timer runs out and i have completed questions do this 
+  getQuestions();
 };
 
+
+function getQuestions() {
+  questionEl.style.display = 'block';
+  var nextQuestion = questions[0];
+
+  var questionTitleEl = document.getElementById("question-title");
+  questionTitleEl.innerHTML = "<h1 class='title'>" + nextQuestion.question + "</h1>";
+  console.log(questionTitleEl.innerHTML);
+};
+
+startBtn.addEventListener("click", startQuiz);

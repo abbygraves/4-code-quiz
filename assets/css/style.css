@@ -93,10 +93,24 @@ body {
 }
 
 
+/* citation: https://www.sliderrevolution.com/resources/css-button-hover-effects/ */
 .button-style:hover,
 .button-style:focus {
   box-shadow: inset 7em 0 0 0 var(--primary);
-  transition: 0.6s;
+  transition: 0.5s;
+}
+
+.questions {
+  /* border: 3px solid magenta; */
+  margin: 80px auto 0 auto;
+  padding: 5px;
+  max-width: 900px;
+}
+
+.title {
+  font-size: 28px;
+  color: #000;
+  text-align: left;
 }
 
 
