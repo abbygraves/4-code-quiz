@@ -3,14 +3,14 @@
 }
 
 :root {
-  --primary: #00e1ff8d;
-  --secondary: #01c1da;
-  --tertiary: rgba(0, 0, 255, 0.35);
-  --fourth: rgb(220, 220, 220);
+  --first: #6deeffce; /* –––––––––––––– main color (slightly transparent) */
+  --second: #18b5cae9;  /* –––––––––––––– more opaque version of main color */
+  --third: rgb(220, 220, 220); /* –––– light grey for shadows */
+  --fourth: #00a2ffbe; /* –––––––––––––– periwinkle blue for accents */
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Geneva, Verdana, sans-serif;
 }
 
 
@@ -24,30 +24,31 @@ body {
 .highscore {
 /* container holding: "View High Scores" */
   display: inline;
+  
 }
 
 
 .highscore a {
 /* specificlly targeting the words "View High Scores" only */
   text-decoration: none;
-  color: var(--secondary);
+  color: var(--second);
   padding: 0px 1px 3px 1px;
 }
 
 
 .highscore a:hover {
-  border-bottom: 3px dotted var(--tertiary);
+  border-bottom: 3.5px dotted var(--fourth);
 }
 
 
 .timer {
 /* container holding: "Time: 0" */
-  background-color: var(--primary);
+  background-color: var(--first);
   padding: 5px 15px;
   border-radius: 5px;
   float: right;
   color: black;
-  filter: drop-shadow(-2px 4px 4px var(--fourth));
+  filter: drop-shadow(-2px 4px 4px var(--third));
 }
 
   
@@ -67,14 +68,17 @@ body {
   text-align: center;
 }
 
+
 .main-page h1 {
   font-size: 50px;
   margin-bottom: 35px;
 }
 
+
 .main-page p {
   font-size: 20px;
-  padding: 0 40px;
+  margin: 30px;
+  padding: 0 50px;
   line-height: 1.4;
   font-weight:lighter;
 }
@@ -83,22 +87,24 @@ body {
 .button-style {
 /* universal styling for all buttons throughout project */
   font-size: 21px;
-  padding: 10px 20px;
-  margin-top: 30px;
+  padding: 13px 20px;
+  margin-top: 12px;
   background-color: transparent;
-  border: 2px solid var(--primary);
-  border-radius: 4px;
+  border: 2px solid var(--first);
+  border-radius: 5px;
   color: #000;
-  font-weight: bold;
+  cursor: pointer;
+  filter: drop-shadow(-3px 4px 4px var(--third));
 }
 
 
 /* citation: https://www.sliderrevolution.com/resources/css-button-hover-effects/ */
 .button-style:hover,
 .button-style:focus {
-  box-shadow: inset 7em 0 0 0 var(--primary);
+  box-shadow: inset 7em 0 0 0 var(--first);
   transition: 0.5s;
 }
+
 
 .questions {
   /* border: 3px solid magenta; */
@@ -108,9 +114,30 @@ body {
 }
 
 .title {
-  font-size: 28px;
+  font-size: 38px;
   color: #000;
   text-align: left;
+  padding-bottom: 0px;
 }
 
 
+.choices {
+  /* border: 3px solid orange; */
+  padding: 10px 0px 0px 20px;
+}
+
+.choices button {
+  display: block;
+  background-color: var(--first);
+  border: none;
+  width: 250px;
+  text-align: left;
+  filter: drop-shadow(-3px 4px 3px var(--third));
+}
+
+.choices button:hover,
+.choices button:focus  {
+  box-shadow: inset 12em 0 0 0 #00a2ffbe;
+  transition: 0.5s;
+  color: white;
+}
