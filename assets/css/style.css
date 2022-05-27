@@ -90,7 +90,7 @@ body {
   padding: 13px 20px;
   margin-top: 12px;
   background-color: transparent;
-  border: 2px solid var(--first);
+  border: 2.3px solid var(--first);
   border-radius: 5px;
   color: #000;
   cursor: pointer;
