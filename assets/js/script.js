@@ -1,4 +1,6 @@
-var questions = [
+var generateQuestionIndex = 0;
+
+var questionsArray = [
   {
     question: "Commonly used data types do NOT include:",
     choices: ["alerts", "booleans", "strings", "numbers"],
@@ -29,7 +31,8 @@ var questions = [
 var startBtn = document.getElementById("start-btn");
 var mainPage = document.getElementById("main-page");
 var questionEl = document.querySelector(".questions");
-var choicesEl = document.querySelector(".choices")
+var choicesEl = document.querySelector(".choices");
+
 
 function startQuiz() {
   startBtn.style.display = 'none';
@@ -47,27 +50,68 @@ function startQuiz() {
 
 
 function getQuestions() {
-  for (i = 0; i < questions.length; i++) {
-    console.log("Element at index " + i + " : "+ questions[i]);
+  for (var i = 0; i < questionsArray.length; i++) {
 
     questionEl.style.display = 'block';
-    var newQuestion = questions[i];
-    console.log(newQuestion)
-    
+    var generateQuestion = questionsArray[0];
+    console.log(questionsArray.length);
+
     var questionTitleEl = document.getElementById("question-title");
-    questionTitleEl.innerHTML = "<h1 class='title'>" + newQuestion.question + "</h1>";
-    //console.log(questionTitleEl.innerHTML);
+    questionTitleEl.innerHTML = "<h1 class='title'>" + generateQuestion.question + "</h1>";
   }
+
+  generateQuestion.choices.forEach(function(choice, i) {
+
+    var choicesBtnEl = document.createElement("button");
+    choicesBtnEl.setAttribute("value", "choice-btn");
+    choicesBtnEl.setAttribute("class", "button-style");
+    choicesBtnEl.textContent = i + 1 + ". " + choice;
+
+    choicesEl.appendChild(choicesBtnEl);
+    choicesBtnEl.onclick = (choiceSelect);
+  });
+};
+
+function choiceSelect() {
+  generateQuestionIndex++;
 };
 
 
-function getChoices() {
-     var newChoices = questions[0]
+console.log(generateQuestionIndex++)
 
-     var buttonTextEl = document.getElementById("choice-1-btn");
-     buttonTextEl.textContent = newChoices;
-     console.log(newChoices)
-};
 
-//getChoices();
+
+
+
+
 startBtn.addEventListener("click", startQuiz);
+
+
+
+    
+
+
+
+
+// function createTaskActions(taskId) {
+//   var actionContainerEl = document.createElement("div");
+//   actionContainerEl.className = "task-actions";
+
+//   // create edit button
+//   var editButtonEl = document.createElement("button");
+//   editButtonEl.textContent = "Edit";
+//   editButtonEl.className = "btn edit-btn";
+//   editButtonEl.setAttribute("data-task-id", taskId);
+
+//   actionContainerEl.appendChild(editButtonEl);
+
+
+//   var statusChoices = ["To Do", "In Progress", "Completed"];
+//   //for (var i = 0; i < statusChoices.length; i++) {
+//     // create option element
+//     var statusOptionEl = document.createElement("option");
+//     statusOptionEl.textContent = statusChoices[i];
+//     statusOptionEl.setAttribute("value", statusChoices[i]);
+
+//     // append to select
+//     statusSelectEl.appendChild(statusOptionEl);
