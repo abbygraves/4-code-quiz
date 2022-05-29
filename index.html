@@ -19,7 +19,7 @@
       </div>
       <div class="timer">
         Time:
-        <span id="timer-countdown">0</span>
+        <span id="time-remaining"></span>
       </div>
     </section>
     <!-- HIGH SCORE LINK & TIMER END-->
@@ -44,21 +44,30 @@
 
 
 
-    <!-- QUESTION BOX START-->
-    <div class="questions" id="question-box" style="display:none">
+    <!-- QUESTION PAGE START-->
+    <div class="question-box" id="question-box" style="display:none">
       <h1 class="title" id="question-title"></h1>
       <div class="choices" id="question-choices"></div>
+      <div class="feedback" id="question-feedback"></div>
     </div>
-
-
-      <!-- DECLARTION OF CORRECT OR WRONG ANSWER -->
-    <!-- QUESTION BOX END-->
+    <!-- QUESTION PAGE END-->
 
 
 
+    <!-- FINAL PAGE START-->
+    <div class="final-page" id="final-page" style="display:none">
+      <h1 class="">Quiz Complete!</h1>
+      <p>
+        Your final score is: <span id="final-score"></span>
+      </p>
+      <div class="initials-field">
+        <p>Enter initials:  </p>
+        <input type="text" id="initials-field"/>
+        <button class="button-style submit" id="sumbit-btn">Submit</button>
+      </div>
+    </div>
+    <!-- FINAL PAGE END-->
 
-    <!-- COMPLETED QUIZ PAGE START -->
-    <!-- COMPLETED QUIZ PAGE END -->
 
 
     <script src="./assets/js/script.js"></script>

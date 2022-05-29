@@ -1,37 +1,55 @@
-var generateQuestionIndex = 0;
-
 var questionsArray = [
   {
-    question: "Commonly used data types do NOT include:",
+    title: "Commonly used data types do NOT include:",
     choices: ["alerts", "booleans", "strings", "numbers"],
-    answer: "alerts" 
+    answer: "alerts"
   },
   {
-    question: "The condition in an if / else statement is enclosed with _______.",
+    title: "The condition in an if / else statement is enclosed with _______.",
     choices: ["quotes", "curly brackets", "parenthesis", "square brackets"],
     answer: "parenthesis"
   },
   {
-    question: "Arrays in JavaScript can be used to store _______.",
+    title: "Arrays in JavaScript can be used to store _______.",
     choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
     answer: "all of the above"
   },
   {
-    question: "String values must be enclosed within _______ when being assigned to variables.",
+    title: "String values must be enclosed within _______ when being assigned to variables.",
     choices: ["commas", "curly brackets", "quotes", "parenthesis"],
     answer: "quotes"
   },
   {
-    question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+    title: "A very useful tool used during development and debugging for printing content to the debugger is:",
     choices: ["JavaScript", "terminal/bash", "for loops", "console.log"],
-    answer: "console.log" 
+    answer: "console.log"
   }
 ];
 
+//this.score = 0
+var time = questionsArray.length * 10;
+var questionIndex = 0;
+var choicesIndex = 0;
+
+var timerEl = document.getElementById("time-remaining");
 var startBtn = document.getElementById("start-btn");
 var mainPage = document.getElementById("main-page");
 var questionEl = document.querySelector(".questions");
+var questionBox = document.getElementById("question-box")
 var choicesEl = document.querySelector(".choices");
+var feedbackEl = document.getElementById("question-feedback");
+
+function timerCountdown() {
+  timerEl.textContent = (time);
+  time--;
+
+  if (time < 0) {
+    time = 0;
+  }
+  if (time <= 0) {
+    endQuiz();
+  }
+};
 
 
 function startQuiz() {
@@ -41,29 +59,28 @@ function startQuiz() {
   var questionBox = document.getElementById("question-box");
   questionBox.style.display = 'block';
 
-  // setInterval function
-  // if timer runs out and i have not completed questions then do this 
+  setInterval(timerCountdown, 1000);
 
-  // if timer runs out and i have completed questions do this 
-  getQuestions();
+  displayQuestions();
 };
 
 
-function getQuestions() {
+
+function displayQuestions() {
   for (var i = 0; i < questionsArray.length; i++) {
 
-    questionEl.style.display = 'block';
-    var generateQuestion = questionsArray[0];
-    console.log(questionsArray.length);
+    //questionEl.style.display = 'block';
+    var generateQuestion = questionsArray[questionIndex];
+    console.log(questionIndex);
 
     var questionTitleEl = document.getElementById("question-title");
-    questionTitleEl.innerHTML = "<h1 class='title'>" + generateQuestion.question + "</h1>";
+    questionTitleEl.innerHTML = "<h1 class='title'>" + generateQuestion.title + "</h1>";
   }
 
-  generateQuestion.choices.forEach(function(choice, i) {
+  generateQuestion.choices.forEach(function (choice, i) {
 
     var choicesBtnEl = document.createElement("button");
-    choicesBtnEl.setAttribute("value", "choice-btn");
+    choicesBtnEl.setAttribute("value", choice);
     choicesBtnEl.setAttribute("class", "button-style");
     choicesBtnEl.textContent = i + 1 + ". " + choice;
 
@@ -72,23 +89,38 @@ function getQuestions() {
   });
 };
 
+
 function choiceSelect() {
-  generateQuestionIndex++;
+  if (this.value !== questionsArray[questionIndex].answer) {
+    time -= 5;
+    timerEl.textContent = time;
+    feedbackEl.textContent = "Nope!";
+  } else {
+    feedbackEl.textContent = "Yes!";
+  }
+  questionIndex++;
+
+  if (questionIndex === questionsArray.length) {
+    endQuiz();
+  } else {
+    displayQuestions();
+  }
 };
 
 
-console.log(generateQuestionIndex++)
+function endQuiz() {
+  var finalPage = document.getElementById("final-page");
+  questionBox.style.display = 'none';
+  finalPage.style.display = 'block';
 
 
-
-
-
+};
 
 startBtn.addEventListener("click", startQuiz);
 
 
 
-    
+
 
 
 

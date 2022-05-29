@@ -57,7 +57,7 @@ body {
 }
 
 
-.main-page {
+.main-page, .final-page {
 /* container holding: quiz title (<h2>) / quiz instructions (<p>) / "Start Quiz!" button (<button>) */
   display: block;
   /* background-color: rgba(0, 0, 255, 0.175); */
@@ -86,6 +86,7 @@ body {
 
 .button-style {
 /* universal styling for all buttons throughout project */
+  display: inline-block;
   font-size: 21px;
   padding: 13px 20px;
   margin-top: 12px;
@@ -106,7 +107,7 @@ body {
 }
 
 
-.questions {
+.question-box {
   /* border: 3px solid magenta; */
   margin: 80px auto 0 auto;
   padding: 5px;
@@ -126,6 +127,7 @@ body {
   padding: 10px 0px 0px 20px;
 }
 
+
 .choices button {
   display: block;
   background-color: var(--first);
@@ -135,9 +137,42 @@ body {
   filter: drop-shadow(-3px 4px 3px var(--third));
 }
 
+
 .choices button:hover,
 .choices button:focus  {
   box-shadow: inset 12em 0 0 0 #00a2ffbe;
   transition: 0.5s;
   color: white;
+}
+
+.final-page h1 {
+  font-size: 50px;
+  margin-top: 0px;
+}
+
+.final-page p {
+  font-size: 30px;
+}
+
+.initials-field {
+  margin-top: 60px;
+}
+
+
+.initials-field p {
+  display: inline;
+  font-size: 26px;
+}
+
+
+.final-page input {
+  font-size: 26px;
+  margin: 0px 15px;
+  font-weight: normal;
+  
+}
+
+.submit {
+  padding: 6px 20px;
+  margin: 0px 3px;
 }
