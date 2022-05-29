@@ -3,46 +3,44 @@
 }
 
 :root {
-  --first: #6deeffce; /* –––––––––––––– main color (slightly transparent) */
-  --second: #18b5cae9;  /* –––––––––––––– more opaque version of main color */
-  --third: rgb(220, 220, 220); /* –––– light grey for shadows */
+  --first: #6deeffce;  /* –––––––––––––– main color (slightly transparent) */
+  --second: #18b5cae9; /* –––––––––––––– more opaque version of main color */
+  --third: rgb(220, 220, 220); /* –––––– light grey for shadows */
   --fourth: #00a2ffbe; /* –––––––––––––– periwinkle blue for accents */
+  --fifth: #00a2ff89;
 }
 
 body {
   font-family: Geneva, Verdana, sans-serif;
 }
 
+/* –––––––––––––––––––––––––––––––––––––––––––––––– */
 
+
+/* MAIN PAGE START */
 .info-bar {
   margin: 25px 25px 0 18px;
   font-weight: bold;
   font-size: 20px;
 }
 
-
-.highscore {
-/* container holding: "View High Scores" */
+.view-high-score {
   display: inline;
-  
+
 }
 
-
-.highscore a {
-/* specificlly targeting the words "View High Scores" only */
+.view-high-score a {
   text-decoration: none;
   color: var(--second);
   padding: 0px 1px 3px 1px;
 }
 
-
-.highscore a:hover {
+.view-high-score a:hover {
   border-bottom: 3.5px dotted var(--fourth);
 }
 
 
 .timer {
-/* container holding: "Time: 0" */
   background-color: var(--first);
   padding: 5px 15px;
   border-radius: 5px;
@@ -51,16 +49,13 @@ body {
   filter: drop-shadow(-2px 4px 4px var(--third));
 }
 
-  
 .timer span {
   font-weight: normal;
 }
 
-
-.main-page, .final-page {
-/* container holding: quiz title (<h2>) / quiz instructions (<p>) / "Start Quiz!" button (<button>) */
+.main-page,  /* Container holding: Quiz title / Quiz instructions / Start quiz button */
+.final-page /* Container holding: Title / Users final score / Initials field / Submit button */ {
   display: block;
-  /* background-color: rgba(0, 0, 255, 0.175); */
   padding: 30px 30px 60px 30px;
   border-radius: 10px;
   margin: 80px auto 0 auto;
@@ -68,24 +63,128 @@ body {
   text-align: center;
 }
 
-
 .main-page h1 {
   font-size: 50px;
   margin-bottom: 35px;
 }
-
 
 .main-page p {
   font-size: 20px;
   margin: 30px;
   padding: 0 50px;
   line-height: 1.4;
-  font-weight:lighter;
+  font-weight: lighter;
+}
+/* MAIN PAGE END */
+
+/* –––––––––––––––––––––––––––––––––––––––––––––––– */
+
+/* QUESTION PAGE START */
+.question-box {
+  /* border: 3px solid magenta; */
+  margin: 80px auto 0 auto;
+  padding: 5px;
+  max-width: 900px;
 }
 
+.title {
+  font-size: 36px;
+  color: #000;
+  text-align: left;
+  padding-bottom: 0px;
+}
 
+.choices {
+  /* border: 3px solid orange; */
+  padding: 10px 0px 0px 20px;
+}
+/* QUESTION PAGE END */
+
+
+/* –––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+/* FINAL PAGE START */
+.final-page h1 {
+  font-size: 50px;
+  margin-top: 0px;
+}
+
+.final-page p {
+  font-size: 30px;
+}
+
+.initials-field {
+  margin-top: 60px;
+}
+
+.initials-field p {
+  display: inline;
+  font-size: 26px;
+}
+
+.final-page input {
+  font-size: 26px;
+  margin: 0px 15px;
+  font-weight: normal;
+}
+/* FINAL PAGE END */
+
+
+/* –––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+/* HIGHSCORES PAGE START */
+.high-scores-box {
+  /* border: 2px solid magenta; */
+  margin: 80px auto 0 auto;
+  max-width: 700px;
+  
+}
+
+.high-scores-box h1 {
+  /* border: 2px solid lime; */
+  text-align: center;
+  font-size: 44px;
+  font-weight: bolder;
+  border-bottom:6px dotted var(--fourth);
+  width: 300px;
+  margin: 0px auto 35px auto;
+  
+}
+
+.high-scores-list {
+  /* border: 2px solid royalblue; */
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.high-scores-list ol {
+  width: 550px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.high-scores-list ol li {
+  background-color: #00a2ff75;
+  padding: 5px 0px 5px 30px ;
+  margin: 10px 0px;
+  list-style: decimal inside none;
+}
+
+.high-scores-list li:nth-child(even) {
+  background-color: #6deeffa2;
+}
+/* HIGHSCORES PAGE END */
+
+
+/* –––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+/* BUTTONS START */
 .button-style {
-/* universal styling for all buttons throughout project */
+  /* base styling for all buttons throughout project */
   display: inline-block;
   font-size: 21px;
   padding: 13px 20px;
@@ -99,32 +198,12 @@ body {
 }
 
 
+/* base hover effect for all buttons */
 /* citation: https://www.sliderrevolution.com/resources/css-button-hover-effects/ */
 .button-style:hover,
 .button-style:focus {
   box-shadow: inset 7em 0 0 0 var(--first);
   transition: 0.5s;
-}
-
-
-.question-box {
-  /* border: 3px solid magenta; */
-  margin: 80px auto 0 auto;
-  padding: 5px;
-  max-width: 900px;
-}
-
-.title {
-  font-size: 38px;
-  color: #000;
-  text-align: left;
-  padding-bottom: 0px;
-}
-
-
-.choices {
-  /* border: 3px solid orange; */
-  padding: 10px 0px 0px 20px;
 }
 
 
@@ -139,40 +218,71 @@ body {
 
 
 .choices button:hover,
-.choices button:focus  {
+.choices button:focus {
   box-shadow: inset 12em 0 0 0 #00a2ffbe;
   transition: 0.5s;
   color: white;
 }
 
-.final-page h1 {
-  font-size: 50px;
-  margin-top: 0px;
-}
 
-.final-page p {
-  font-size: 30px;
-}
-
-.initials-field {
-  margin-top: 60px;
-}
-
-
-.initials-field p {
-  display: inline;
-  font-size: 26px;
-}
-
-
-.final-page input {
-  font-size: 26px;
-  margin: 0px 15px;
-  font-weight: normal;
-  
-}
-
-.submit {
+.submit-btn {
   padding: 6px 20px;
   margin: 0px 3px;
 }
+
+
+.high-scores-btn-box {
+  /* border: 2px solid orange; */
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.high-scores-btn-box button {
+  background-color: var(--first);
+  border: none;
+  text-align: center;
+  filter: drop-shadow(-3px 4px 3px var(--third));
+  font-size: 20px;
+}
+
+
+.go-back-btn {
+  display: inline;
+}
+
+
+.go-back-btn button {
+  width: 105px;
+  padding: 5px;
+  margin: 0px 35px 0px 0px;
+}
+
+
+.go-back-btn button:hover,
+.go-back-btn button:focus {
+  box-shadow: inset 12em 0 0 0 #00a2ffbe;
+  transition: 0.7s;
+  color: white;
+}
+
+
+.clear-btn {
+  float: right;
+}
+
+
+.clear-btn button {
+  padding: 5px;
+  width: 195px;
+  margin: 0px;
+}
+
+
+.clear-btn button:hover,
+.clear-btn button:focus {
+  box-shadow: inset 12em 0 0 0 #00a2ffbe;
+  transition: 0.7s;
+  color: white;
+}
+/* BUTTONS END */

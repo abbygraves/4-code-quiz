@@ -5,17 +5,17 @@ var questionsArray = [
     answer: "alerts"
   },
   {
-    title: "The condition in an if / else statement is enclosed with _______.",
+    title: "The condition in an if / else statement is enclosed with ＿＿＿＿＿.",
     choices: ["quotes", "curly brackets", "parenthesis", "square brackets"],
     answer: "parenthesis"
   },
   {
-    title: "Arrays in JavaScript can be used to store _______.",
+    title: "Arrays in JavaScript can be used to store ＿＿＿.",
     choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
     answer: "all of the above"
   },
   {
-    title: "String values must be enclosed within _______ when being assigned to variables.",
+    title: "String values must be enclosed within ＿＿＿＿ when being assigned to variables.",
     choices: ["commas", "curly brackets", "quotes", "parenthesis"],
     answer: "quotes"
   },
@@ -36,6 +36,7 @@ var startBtn = document.getElementById("start-btn");
 var mainPage = document.getElementById("main-page");
 var questionEl = document.querySelector(".questions");
 var questionBox = document.getElementById("question-box")
+var questionChoices = document.getElementById("question-choices")
 var choicesEl = document.querySelector(".choices");
 var feedbackEl = document.getElementById("question-feedback");
 
@@ -56,7 +57,6 @@ function startQuiz() {
   startBtn.style.display = 'none';
   mainPage.style.display = 'none';
 
-  var questionBox = document.getElementById("question-box");
   questionBox.style.display = 'block';
 
   setInterval(timerCountdown, 1000);
@@ -69,7 +69,6 @@ function startQuiz() {
 function displayQuestions() {
   for (var i = 0; i < questionsArray.length; i++) {
 
-    //questionEl.style.display = 'block';
     var generateQuestion = questionsArray[questionIndex];
     console.log(questionIndex);
 
@@ -90,6 +89,7 @@ function displayQuestions() {
 };
 
 
+
 function choiceSelect() {
   if (this.value !== questionsArray[questionIndex].answer) {
     time -= 5;
@@ -99,6 +99,7 @@ function choiceSelect() {
     feedbackEl.textContent = "Yes!";
   }
   questionIndex++;
+
 
   if (questionIndex === questionsArray.length) {
     endQuiz();
