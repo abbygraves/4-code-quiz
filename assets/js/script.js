@@ -26,10 +26,13 @@ var questionsArray = [
   }
 ];
 
+
+
 //this.score = 0
 var time = questionsArray.length * 10;
 var questionIndex = 0;
 var choicesIndex = 0;
+
 
 var timerEl = document.getElementById("time-remaining");
 var startBtn = document.getElementById("start-btn");
@@ -39,6 +42,8 @@ var questionBox = document.getElementById("question-box")
 var questionChoices = document.getElementById("question-choices")
 var choicesEl = document.querySelector(".choices");
 var feedbackEl = document.getElementById("question-feedback");
+var initialsEl = document.getElementById("initials-field");
+var submitBtn = document.getElementById("submit-btn");
 
 function timerCountdown() {
   timerEl.textContent = (time);
@@ -48,7 +53,7 @@ function timerCountdown() {
     time = 0;
   }
   if (time <= 0) {
-    endQuiz();
+    //endQuiz();
   }
 };
 
@@ -76,8 +81,9 @@ function displayQuestions() {
     questionTitleEl.innerHTML = "<h1 class='title'>" + generateQuestion.title + "</h1>";
   }
 
-  generateQuestion.choices.forEach(function (choice, i) {
+  //for (var i = 0; i < choicesArray.length; i++) {
 
+  generateQuestion.choices.forEach(function (choice, i) {
     var choicesBtnEl = document.createElement("button");
     choicesBtnEl.setAttribute("value", choice);
     choicesBtnEl.setAttribute("class", "button-style");
@@ -90,6 +96,7 @@ function displayQuestions() {
 
 
 
+
 function choiceSelect() {
   if (this.value !== questionsArray[questionIndex].answer) {
     time -= 5;
@@ -98,7 +105,10 @@ function choiceSelect() {
   } else {
     feedbackEl.textContent = "Yes!";
   }
+
   questionIndex++;
+
+  //choicesEl.replaceWith(questionsArray[questionIndex].choices);
 
 
   if (questionIndex === questionsArray.length) {
@@ -113,38 +123,24 @@ function endQuiz() {
   var finalPage = document.getElementById("final-page");
   questionBox.style.display = 'none';
   finalPage.style.display = 'block';
-
-
 };
 
+
+function submitResults() {
+  var initials = initialsEl.value;
+  if (initials !== "") {
+    var highscores = JSON.parse(localStorage.getItem("time")) || [];
+    var newScore = {
+      score: time,
+      initials: initials
+    };
+
+    highscores.push(newScore);
+    localStorage.setItem("highscores", JSON.stringify(highscores));
+    location.href = "highscores.html";
+  }
+};
+
+
 startBtn.addEventListener("click", startQuiz);
-
-
-
-
-
-
-
-
-// function createTaskActions(taskId) {
-//   var actionContainerEl = document.createElement("div");
-//   actionContainerEl.className = "task-actions";
-
-//   // create edit button
-//   var editButtonEl = document.createElement("button");
-//   editButtonEl.textContent = "Edit";
-//   editButtonEl.className = "btn edit-btn";
-//   editButtonEl.setAttribute("data-task-id", taskId);
-
-//   actionContainerEl.appendChild(editButtonEl);
-
-
-//   var statusChoices = ["To Do", "In Progress", "Completed"];
-//   //for (var i = 0; i < statusChoices.length; i++) {
-//     // create option element
-//     var statusOptionEl = document.createElement("option");
-//     statusOptionEl.textContent = statusChoices[i];
-//     statusOptionEl.setAttribute("value", statusChoices[i]);
-
-//     // append to select
-//     statusSelectEl.appendChild(statusOptionEl);
+submitBtn.addEventListener("click", submitResults);

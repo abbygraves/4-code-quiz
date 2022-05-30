@@ -286,3 +286,7 @@ body {
   color: white;
 }
 /* BUTTONS END */
+
+.hide {
+  display: none;
+}
