@@ -32,6 +32,7 @@ var questionsArray = [
 var time = questionsArray.length * 10;
 var questionIndex = 0;
 var choicesIndex = 0;
+var setTime;
 
 
 var timerEl = document.getElementById("time-remaining");
@@ -53,7 +54,7 @@ function timerCountdown() {
     time = 0;
   }
   if (time <= 0) {
-    //endQuiz();
+    endQuiz();
   }
 };
 
@@ -63,8 +64,7 @@ function startQuiz() {
   mainPage.style.display = 'none';
 
   questionBox.style.display = 'block';
-
-  setInterval(timerCountdown, 1000);
+  setTime = setInterval(timerCountdown, 1000);
 
   displayQuestions();
 };
@@ -72,6 +72,8 @@ function startQuiz() {
 
 
 function displayQuestions() {
+  // empties container before displaying new question
+  choicesEl.textContent = "";
   for (var i = 0; i < questionsArray.length; i++) {
 
     var generateQuestion = questionsArray[questionIndex];
@@ -80,8 +82,6 @@ function displayQuestions() {
     var questionTitleEl = document.getElementById("question-title");
     questionTitleEl.innerHTML = "<h1 class='title'>" + generateQuestion.title + "</h1>";
   }
-
-  //for (var i = 0; i < choicesArray.length; i++) {
 
   generateQuestion.choices.forEach(function (choice, i) {
     var choicesBtnEl = document.createElement("button");
@@ -107,10 +107,7 @@ function choiceSelect() {
   }
 
   questionIndex++;
-
-  //choicesEl.replaceWith(questionsArray[questionIndex].choices);
-
-
+  
   if (questionIndex === questionsArray.length) {
     endQuiz();
   } else {
@@ -120,25 +117,27 @@ function choiceSelect() {
 
 
 function endQuiz() {
+  clearInterval(setTime);
   var finalPage = document.getElementById("final-page");
   questionBox.style.display = 'none';
   finalPage.style.display = 'block';
+  submitResults();
 };
 
 
 function submitResults() {
-  var initials = initialsEl.value;
-  if (initials !== "") {
-    var highscores = JSON.parse(localStorage.getItem("time")) || [];
-    var newScore = {
-      score: time,
-      initials: initials
-    };
+  var finalScore = document.getElementById("time-remaining").innerText;
 
-    highscores.push(newScore);
-    localStorage.setItem("highscores", JSON.stringify(highscores));
-    location.href = "highscores.html";
-  }
+  var displayScore = document.getElementById("final-score");
+  displayScore.textContent = finalScore;
+  
+  var initials = initialsEl.value;
+  var newScore = { initials, finalScore };
+  //console.log(newScore)
+  localStorage.setItem("highscores", JSON.stringify(newScore));
+  var highscoresArray = [];
+  highscoresArray.push(newScore);
+  //console.log(highscoresArray);
 };
 
 
